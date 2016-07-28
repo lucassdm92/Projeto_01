@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\Lucas\Documents\Desenvolvimento\Projetos\Android\Projeto_01\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="C:\Users\Lucas\Documents\Desenvolvimento\Projetos\Android\Projeto_01\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-23.1.1_e62f3291bd1208cf453d4b34595e92f30cb57070.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lucas\Documents\Desenvolvimento\Projetos\Android\Projeto_01\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="C:\Users\Lucas\Documents\Desenvolvimento\Projetos\Android\Projeto_01\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.1.1_4388057693680ea2b80ba757289e216872c9496e.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lucas\Documents\Desenvolvimento\Projetos\Android\Projeto_01\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="65d086ee9daaf87b5af62ad24471edafa433354c">
+        <dex dex="C:\Users\Lucas\Documents\Desenvolvimento\Projetos\Android\Projeto_01\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-appindexing-8.4.0_aba4a84c1d5f89a263fa68fd1f533303bc6f91ca.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lucas\Documents\Desenvolvimento\Projetos\Android\Projeto_01\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="09c5e804bc67fc0580360043dff067df574a60d4">
+        <dex dex="C:\Users\Lucas\Documents\Desenvolvimento\Projetos\Android\Projeto_01\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-23.1.1_c3c037e9473cbcb623d400cd73a351bfd1965e4f.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lucas\Documents\Desenvolvimento\Projetos\Android\Projeto_01\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="fef2b3e4b6b1b0e5fe7b69fa137a5fa55a3182ab">
+        <dex dex="C:\Users\Lucas\Documents\Desenvolvimento\Projetos\Android\Projeto_01\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-base-8.4.0_5c6e45e83a1a62a5634a5e60dec0e48bba838c40.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lucas\Documents\Desenvolvimento\Projetos\Android\Projeto_01\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.4.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
+        <dex dex="C:\Users\Lucas\Documents\Desenvolvimento\Projetos\Android\Projeto_01\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-basement-8.4.0_1229f94c2db9fd7215e34a98b4b58f6229a061bb.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lucas\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.1\support-annotations-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="C:\Users\Lucas\Documents\Desenvolvimento\Projetos\Android\Projeto_01\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.1_20664ed47321b3d92df7bc6a98e5ba50bb5238d8.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lucas\Documents\Desenvolvimento\Projetos\Android\Projeto_01\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.1\jars\libs\internal_impl-23.1.1.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="C:\Users\Lucas\Documents\Desenvolvimento\Projetos\Android\Projeto_01\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.1_e59432a69dce690913e28953a690055ea1f912ee.jar" />
+    </item>
+    <item
+        jar="C:\Users\Lucas\Documents\Desenvolvimento\Projetos\Android\Projeto_01\app\build\intermediates\exploded-aar\com.android.support\design\23.1.1\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.3"
+        sha1="379471b2bd17d9737c050345c08e8c7d16589784">
+        <dex dex="C:\Users\Lucas\Documents\Desenvolvimento\Projetos\Android\Projeto_01\app\build\intermediates\pre-dexed\debug\com.android.support-design-23.1.1_a8ac544720b2b7b03c741a06002ee5a857669e24.jar" />
+    </item>
+
+</items>

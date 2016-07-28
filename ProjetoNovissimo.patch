@@ -1,0 +1,2067 @@
+Index: app/src/main/res/values-large/refs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values-large/refs.xml	(revision )
++++ app/src/main/res/values-large/refs.xml	(revision )
+@@ -0,0 +1,12 @@
++<resources>
++
++    <!--
++    Layout alias to replace the single-pane version of the layout with a
++    two-pane version on Large screens.
++
++    For more on layout aliases, see:
++    http://developer.android.com/training/multiscreen/screensizes.html#TaskUseAliasFilters
++    -->
++    <item name="fragment_item" type="layout">@layout/fragment_item_grid</item>
++
++</resources>
+\ No newline at end of file
+Index: ProjetoVarsea.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ProjetoVarsea.iml	(revision )
++++ ProjetoVarsea.iml	(revision )
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module external.linked.project.id="ProjetoVarsea" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$" external.system.id="GRADLE" external.system.module.group="" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
++  <component name="FacetManager">
++    <facet type="java-gradle" name="Java-Gradle">
++      <configuration>
++        <option name="BUILD_FOLDER_PATH" value="$MODULE_DIR$/build" />
++        <option name="BUILDABLE" value="false" />
++      </configuration>
++    </facet>
++  </component>
++  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="true">
++    <exclude-output />
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/.gradle" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_blank.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/fragment_blank.xml	(revision )
++++ app/src/main/res/layout/fragment_blank.xml	(revision )
+@@ -0,0 +1,15 @@
++<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context="info.androidhive.materialtabs.fragments.OneFragment">
++
++    <TextView
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++  android:text="TESTETETETETE"
++        android:textSize="40dp"
++        android:textStyle="bold"
++        android:layout_centerInParent="true"/>
++
++</RelativeLayout>
+\ No newline at end of file
+Index: app/src/main/res/values-sw600dp/refs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values-sw600dp/refs.xml	(revision )
++++ app/src/main/res/values-sw600dp/refs.xml	(revision )
+@@ -0,0 +1,12 @@
++<resources>
++
++    <!--
++    Layout alias to replace the single-pane version of the layout with a
++    two-pane version on Large screens.
++
++    For more on layout aliases, see:
++    http://developer.android.com/training/multiscreen/screensizes.html#TaskUseAliasFilters
++    -->
++    <item name="fragment_item" type="layout">@layout/fragment_item_grid</item>
++
++</resources>
+\ No newline at end of file
+Index: app/src/main/java/projetovarsea/lucassoft/com/br/projetovarsea/TwoFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/projetovarsea/lucassoft/com/br/projetovarsea/TwoFragment.java	(revision )
++++ app/src/main/java/projetovarsea/lucassoft/com/br/projetovarsea/TwoFragment.java	(revision )
+@@ -0,0 +1,180 @@
++package projetovarsea.lucassoft.com.br.projetovarsea;
++
++import android.app.Activity;
++import android.net.Uri;
++import android.os.Bundle;
++
++import android.support.v4.app.Fragment;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++import android.widget.AbsListView;
++import android.widget.AdapterView;
++import android.widget.ListView;
++
++import java.util.ArrayList;
++import java.util.List;
++
++
++/**
++ * A simple {@link Fragment} subclass.
++ * Activities that contain this fragment must implement the
++ * {@link TwoFragment.OnFragmentInteractionListener} interface
++ * to handle interaction events.
++ * Use the {@link TwoFragment#newInstance} factory method to
++ * create an instance of this fragment.
++ */
++public class TwoFragment extends Fragment implements AbsListView.OnItemClickListener {
++    // TODO: Rename parameter arguments, choose names that match
++    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
++    private static final String ARG_PARAM1 = "param1";
++    private static final String ARG_PARAM2 = "param2";
++
++    // TODO: Rename and change types of parameters
++    private String mParam1;
++    private String mParam2;
++
++    private OnFragmentInteractionListener mListener;
++
++
++
++    /***Custom***/
++
++    private CustomListAdapterTimes customAdapterlist;
++    private ListView mListView;
++
++
++    /**
++     * Use this factory method to create a new instance of
++     * this fragment using the provided parameters.
++     *
++     * @param param1 Parameter 1.
++     * @param param2 Parameter 2.
++     * @return A new instance of fragment TwoFragment.
++     */
++    // TODO: Rename and change types and number of parameters
++    public static TwoFragment newInstance(String param1, String param2) {
++        TwoFragment fragment = new TwoFragment();
++        Bundle args = new Bundle();
++        args.putString(ARG_PARAM1, param1);
++        args.putString(ARG_PARAM2, param2);
++        fragment.setArguments(args);
++        return fragment;
++    }
++
++    public TwoFragment() {
++        // Required empty public constructor
++    }
++
++    @Override
++    public void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        if (getArguments() != null) {
++            mParam1 = getArguments().getString(ARG_PARAM1);
++            mParam2 = getArguments().getString(ARG_PARAM2);
++        }
++
++        TimesVO time1 = new TimesVO();
++        time1.setNomeTime("JD Angela FC");
++        time1.setDescricaoTimes("Time da Primeira divisão");
++
++        TimesVO time2 = new TimesVO();
++        time2.setNomeTime("Nakamura FC");
++        time2.setDescricaoTimes("Time da Primeira divisão");
++
++
++        TimesVO time3 = new TimesVO();
++        time3.setNomeTime("Assoc. Pé de Pano");
++        time3.setDescricaoTimes("Time da Primeira divisão");
++
++
++        TimesVO time4 = new TimesVO();
++        time4.setNomeTime("Capela Futebol Soccer");
++        time4.setDescricaoTimes("Time da Primeira divisão");
++
++
++        TimesVO time5 = new TimesVO();
++        time5.setNomeTime("Varsea M Boi Mirim FC");
++        time5.setDescricaoTimes("Time da Primeira divisão");
++
++
++        TimesVO time6 = new TimesVO();
++        time6.setNomeTime("Cachaça FC");
++        time6.setDescricaoTimes("Time da Primeira divisão");
++        List<TimesVO> listaTime = new ArrayList<TimesVO>() ;
++        listaTime.add(time1);
++        listaTime.add(time2);
++        listaTime.add(time3);
++        listaTime.add(time4);
++        listaTime.add(time5);
++        listaTime.add(time6);
++
++        customAdapterlist = new CustomListAdapterTimes(this.getActivity(),android.R.layout.simple_list_item_1,listaTime);
++    }
++
++    @Override
++    public View onCreateView(LayoutInflater inflater, ViewGroup container,
++                             Bundle savedInstanceState) {
++        View view = inflater.inflate(R.layout.fragment_item_list, container, false);
++        mListView = (ListView) view.findViewById(android.R.id.list);
++        mListView.setAdapter(customAdapterlist);
++
++        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
++            @Override
++            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
++                TimesVO venue = customAdapterlist.getItem(position);
++                Bundle bundle = new Bundle();
++                // bundle.putSerializable("venue", (Serializable) venue.getListIamgem());
++                bundle.putString("venue", venue.getNomeTime());
++                // startActivity(new Intent(getActivity(), ScrollingActivity.class).putExtras(bundle));
++            }
++        });
++
++        return view;
++    }
++
++    // TODO: Rename method, update argument and hook method into UI event
++    public void onButtonPressed(Uri uri) {
++        if (mListener != null) {
++            mListener.onFragmentInteraction(uri);
++        }
++    }
++
++    @Override
++    public void onAttach(Activity activity) {
++        super.onAttach(activity);
++        try {
++            mListener = (OnFragmentInteractionListener) activity;
++        } catch (ClassCastException e) {
++            throw new ClassCastException(activity.toString()
++                    + " must implement OnFragmentInteractionListener");
++        }
++    }
++
++    @Override
++    public void onDetach() {
++        super.onDetach();
++        mListener = null;
++    }
++
++    @Override
++    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
++
++    }
++
++    /**
++     * This interface must be implemented by activities that contain this
++     * fragment to allow an interaction in this fragment to be communicated
++     * to the activity and potentially other fragments contained in that
++     * activity.
++     * <p/>
++     * See the Android Training lesson <a href=
++     * "http://developer.android.com/training/basics/fragments/communicating.html"
++     * >Communicating with Other Fragments</a> for more information.
++     */
++    public interface OnFragmentInteractionListener {
++        // TODO: Update argument type and name
++        public void onFragmentInteraction(Uri uri);
++    }
++
++}
+Index: app/src/main/res/menu/menu_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/menu/menu_main.xml	(revision )
++++ app/src/main/res/menu/menu_main.xml	(revision )
+@@ -0,0 +1,6 @@
++<menu xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
++    <item android:id="@+id/action_settings" android:title="@string/action_settings"
++        android:orderInCategory="100" app:showAsAction="never" />
++</menu>
+Index: gradle/wrapper/gradle-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1252
+===================================================================
+--- gradle/wrapper/gradle-wrapper.properties	(revision )
++++ gradle/wrapper/gradle-wrapper.properties	(revision )
+@@ -0,0 +1,6 @@
++#Tue May 03 23:01:09 BRT 2016
++distributionBase=GRADLE_USER_HOME
++distributionPath=wrapper/dists
++zipStoreBase=GRADLE_USER_HOME
++zipStorePath=wrapper/dists
++distributionUrl=https\://services.gradle.org/distributions/gradle-2.4-all.zip
+Index: app/src/main/res/values-w820dp/dimens.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values-w820dp/dimens.xml	(revision )
++++ app/src/main/res/values-w820dp/dimens.xml	(revision )
+@@ -0,0 +1,6 @@
++<resources>
++    <!-- Example customization of dimensions originally defined in res/values/dimens.xml
++         (such as screen margins) for screens with more than 820dp of available width. This
++         would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively). -->
++    <dimen name="activity_horizontal_margin">64dp</dimen>
++</resources>
+Index: app/proguard-rules.pro
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/proguard-rules.pro	(revision )
++++ app/proguard-rules.pro	(revision )
+@@ -0,0 +1,17 @@
++# Add project specific ProGuard rules here.
++# By default, the flags in this file are appended to flags specified
++# in C:\Users\Lucas\AppData\Local\Android\sdk/tools/proguard/proguard-android.txt
++# You can edit the include path and order by changing the proguardFiles
++# directive in build.gradle.
++#
++# For more details, see
++#   http://developer.android.com/guide/developing/tools/proguard.html
++
++# Add any project specific keep options here:
++
++# If your project uses WebView with JS, uncomment the following
++# and specify the fully qualified class name to the JavaScript interface
++# class:
++#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
++#   public *;
++#}
+Index: gradlew
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- gradlew	(revision )
++++ gradlew	(revision )
+@@ -0,0 +1,164 @@
++#!/usr/bin/env bash
++
++##############################################################################
++##
++##  Gradle start up script for UN*X
++##
++##############################################################################
++
++# Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
++DEFAULT_JVM_OPTS=""
++
++APP_NAME="Gradle"
++APP_BASE_NAME=`basename "$0"`
++
++# Use the maximum available, or set MAX_FD != -1 to use that value.
++MAX_FD="maximum"
++
++warn ( ) {
++    echo "$*"
++}
++
++die ( ) {
++    echo
++    echo "$*"
++    echo
++    exit 1
++}
++
++# OS specific support (must be 'true' or 'false').
++cygwin=false
++msys=false
++darwin=false
++case "`uname`" in
++  CYGWIN* )
++    cygwin=true
++    ;;
++  Darwin* )
++    darwin=true
++    ;;
++  MINGW* )
++    msys=true
++    ;;
++esac
++
++# For Cygwin, ensure paths are in UNIX format before anything is touched.
++if $cygwin ; then
++    [ -n "$JAVA_HOME" ] && JAVA_HOME=`cygpath --unix "$JAVA_HOME"`
++fi
++
++# Attempt to set APP_HOME
++# Resolve links: $0 may be a link
++PRG="$0"
++# Need this for relative symlinks.
++while [ -h "$PRG" ] ; do
++    ls=`ls -ld "$PRG"`
++    link=`expr "$ls" : '.*-> \(.*\)$'`
++    if expr "$link" : '/.*' > /dev/null; then
++        PRG="$link"
++    else
++        PRG=`dirname "$PRG"`"/$link"
++    fi
++done
++SAVED="`pwd`"
++cd "`dirname \"$PRG\"`/" >&-
++APP_HOME="`pwd -P`"
++cd "$SAVED" >&-
++
++CLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper.jar
++
++# Determine the Java command to use to start the JVM.
++if [ -n "$JAVA_HOME" ] ; then
++    if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
++        # IBM's JDK on AIX uses strange locations for the executables
++        JAVACMD="$JAVA_HOME/jre/sh/java"
++    else
++        JAVACMD="$JAVA_HOME/bin/java"
++    fi
++    if [ ! -x "$JAVACMD" ] ; then
++        die "ERROR: JAVA_HOME is set to an invalid directory: $JAVA_HOME
++
++Please set the JAVA_HOME variable in your environment to match the
++location of your Java installation."
++    fi
++else
++    JAVACMD="java"
++    which java >/dev/null 2>&1 || die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
++
++Please set the JAVA_HOME variable in your environment to match the
++location of your Java installation."
++fi
++
++# Increase the maximum file descriptors if we can.
++if [ "$cygwin" = "false" -a "$darwin" = "false" ] ; then
++    MAX_FD_LIMIT=`ulimit -H -n`
++    if [ $? -eq 0 ] ; then
++        if [ "$MAX_FD" = "maximum" -o "$MAX_FD" = "max" ] ; then
++            MAX_FD="$MAX_FD_LIMIT"
++        fi
++        ulimit -n $MAX_FD
++        if [ $? -ne 0 ] ; then
++            warn "Could not set maximum file descriptor limit: $MAX_FD"
++        fi
++    else
++        warn "Could not query maximum file descriptor limit: $MAX_FD_LIMIT"
++    fi
++fi
++
++# For Darwin, add options to specify how the application appears in the dock
++if $darwin; then
++    GRADLE_OPTS="$GRADLE_OPTS \"-Xdock:name=$APP_NAME\" \"-Xdock:icon=$APP_HOME/media/gradle.icns\""
++fi
++
++# For Cygwin, switch paths to Windows format before running java
++if $cygwin ; then
++    APP_HOME=`cygpath --path --mixed "$APP_HOME"`
++    CLASSPATH=`cygpath --path --mixed "$CLASSPATH"`
++
++    # We build the pattern for arguments to be converted via cygpath
++    ROOTDIRSRAW=`find -L / -maxdepth 1 -mindepth 1 -type d 2>/dev/null`
++    SEP=""
++    for dir in $ROOTDIRSRAW ; do
++        ROOTDIRS="$ROOTDIRS$SEP$dir"
++        SEP="|"
++    done
++    OURCYGPATTERN="(^($ROOTDIRS))"
++    # Add a user-defined pattern to the cygpath arguments
++    if [ "$GRADLE_CYGPATTERN" != "" ] ; then
++        OURCYGPATTERN="$OURCYGPATTERN|($GRADLE_CYGPATTERN)"
++    fi
++    # Now convert the arguments - kludge to limit ourselves to /bin/sh
++    i=0
++    for arg in "$@" ; do
++        CHECK=`echo "$arg"|egrep -c "$OURCYGPATTERN" -`
++        CHECK2=`echo "$arg"|egrep -c "^-"`                                 ### Determine if an option
++
++        if [ $CHECK -ne 0 ] && [ $CHECK2 -eq 0 ] ; then                    ### Added a condition
++            eval `echo args$i`=`cygpath --path --ignore --mixed "$arg"`
++        else
++            eval `echo args$i`="\"$arg\""
++        fi
++        i=$((i+1))
++    done
++    case $i in
++        (0) set -- ;;
++        (1) set -- "$args0" ;;
++        (2) set -- "$args0" "$args1" ;;
++        (3) set -- "$args0" "$args1" "$args2" ;;
++        (4) set -- "$args0" "$args1" "$args2" "$args3" ;;
++        (5) set -- "$args0" "$args1" "$args2" "$args3" "$args4" ;;
++        (6) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" ;;
++        (7) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" ;;
++        (8) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" "$args7" ;;
++        (9) set -- "$args0" "$args1" "$args2" "$args3" "$args4" "$args5" "$args6" "$args7" "$args8" ;;
++    esac
++fi
++
++# Split up the JVM_OPTS And GRADLE_OPTS values into an array, following the shell quoting and substitution rules
++function splitJvmOpts() {
++    JVM_OPTS=("$@")
++}
++eval splitJvmOpts $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS
++JVM_OPTS[${#JVM_OPTS[*]}]="-Dorg.gradle.appname=$APP_BASE_NAME"
++
++exec "$JAVACMD" "${JVM_OPTS[@]}" -classpath "$CLASSPATH" org.gradle.wrapper.GradleWrapperMain "$@"
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_main.xml	(revision )
++++ app/src/main/res/layout/activity_main.xml	(revision )
+@@ -0,0 +1,36 @@
++<?xml version="1.0" encoding="utf-8"?>
++<android.support.design.widget.CoordinatorLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
++    android:layout_height="match_parent" android:fitsSystemWindows="true"
++    tools:context=".MainActivity">
++
++    <android.support.design.widget.AppBarLayout
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
++
++        <android.support.v7.widget.Toolbar
++            android:id="@+id/toolbar"
++            android:layout_width="match_parent"
++            android:layout_height="?attr/actionBarSize"
++            android:background="?attr/colorPrimary"
++            app:layout_scrollFlags="scroll|enterAlways"
++            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
++
++        <android.support.design.widget.TabLayout
++            android:id="@+id/tabs"
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            app:tabMode="fixed"
++            app:tabGravity="fill"/>
++    </android.support.design.widget.AppBarLayout>
++
++    <android.support.v4.view.ViewPager
++        android:id="@+id/viewpager"
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        app:layout_behavior="@string/appbar_scrolling_view_behavior"  />
++
++</android.support.design.widget.CoordinatorLayout>
+Index: .idea/runConfigurations.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/runConfigurations.xml	(revision )
++++ .idea/runConfigurations.xml	(revision )
+@@ -0,0 +1,12 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RunConfigurationProducerService">
++    <option name="ignoredProducers">
++      <set>
++        <option value="org.jetbrains.plugins.gradle.execution.test.runner.AllInPackageGradleConfigurationProducer" />
++        <option value="org.jetbrains.plugins.gradle.execution.test.runner.TestClassGradleConfigurationProducer" />
++        <option value="org.jetbrains.plugins.gradle.execution.test.runner.TestMethodGradleConfigurationProducer" />
++      </set>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: settings.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- settings.gradle	(revision )
++++ settings.gradle	(revision )
+@@ -0,0 +1,1 @@
++include ':app'
+Index: app/app.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/app.iml	(revision )
++++ app/app.iml	(revision )
+@@ -0,0 +1,101 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module external.linked.project.id=":app" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/.." external.system.id="GRADLE" external.system.module.group="ProjetoVarsea" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
++  <component name="FacetManager">
++    <facet type="android-gradle" name="Android-Gradle">
++      <configuration>
++        <option name="GRADLE_PROJECT_PATH" value=":app" />
++      </configuration>
++    </facet>
++    <facet type="android" name="Android">
++      <configuration>
++        <option name="SELECTED_BUILD_VARIANT" value="debug" />
++        <option name="SELECTED_TEST_ARTIFACT" value="_android_test_" />
++        <option name="ASSEMBLE_TASK_NAME" value="assembleDebug" />
++        <option name="COMPILE_JAVA_TASK_NAME" value="compileDebugSources" />
++        <option name="ASSEMBLE_TEST_TASK_NAME" value="assembleDebugAndroidTest" />
++        <option name="COMPILE_JAVA_TEST_TASK_NAME" value="compileDebugAndroidTestSources" />
++        <afterSyncTasks>
++          <task>generateDebugAndroidTestSources</task>
++          <task>generateDebugSources</task>
++        </afterSyncTasks>
++        <option name="ALLOW_USER_CONFIGURATION" value="false" />
++        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/src/main/AndroidManifest.xml" />
++        <option name="RES_FOLDER_RELATIVE_PATH" value="/src/main/res" />
++        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/src/main/res" />
++        <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/src/main/assets" />
++      </configuration>
++    </facet>
++  </component>
++  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="false">
++    <output url="file://$MODULE_DIR$/build/intermediates/classes/debug" />
++    <output-test url="file://$MODULE_DIR$/build/intermediates/classes/androidTest/debug" />
++    <exclude-output />
++    <content url="file://$MODULE_DIR$">
++      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/debug" isTestSource="false" generated="true" />
++      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/debug" isTestSource="false" generated="true" />
++      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/debug" isTestSource="false" generated="true" />
++      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/debug" isTestSource="false" generated="true" />
++      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/debug" type="java-resource" />
++      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/resValues/debug" type="java-resource" />
++      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/androidTest/debug" isTestSource="true" generated="true" />
++      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/androidTest/debug" isTestSource="true" generated="true" />
++      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/androidTest/debug" isTestSource="true" generated="true" />
++      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/androidTest/debug" isTestSource="true" generated="true" />
++      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/androidTest/debug" type="java-test-resource" />
++      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/resValues/androidTest/debug" type="java-test-resource" />
++      <sourceFolder url="file://$MODULE_DIR$/src/debug/res" type="java-resource" />
++      <sourceFolder url="file://$MODULE_DIR$/src/debug/resources" type="java-resource" />
++      <sourceFolder url="file://$MODULE_DIR$/src/debug/assets" type="java-resource" />
++      <sourceFolder url="file://$MODULE_DIR$/src/debug/aidl" isTestSource="false" />
++      <sourceFolder url="file://$MODULE_DIR$/src/debug/java" isTestSource="false" />
++      <sourceFolder url="file://$MODULE_DIR$/src/debug/jni" isTestSource="false" />
++      <sourceFolder url="file://$MODULE_DIR$/src/debug/rs" isTestSource="false" />
++      <sourceFolder url="file://$MODULE_DIR$/src/main/res" type="java-resource" />
++      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
++      <sourceFolder url="file://$MODULE_DIR$/src/main/assets" type="java-resource" />
++      <sourceFolder url="file://$MODULE_DIR$/src/main/aidl" isTestSource="false" />
++      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
++      <sourceFolder url="file://$MODULE_DIR$/src/main/jni" isTestSource="false" />
++      <sourceFolder url="file://$MODULE_DIR$/src/main/rs" isTestSource="false" />
++      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/res" type="java-test-resource" />
++      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/resources" type="java-test-resource" />
++      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/assets" type="java-test-resource" />
++      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/aidl" isTestSource="true" />
++      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/java" isTestSource="true" />
++      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/jni" isTestSource="true" />
++      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/rs" isTestSource="true" />
++      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/assets" />
++      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/bundles" />
++      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/classes" />
++      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/coverage-instrumented-classes" />
++      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/dependency-cache" />
++      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/dex" />
++      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/dex-cache" />
++      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars" />
++      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/design/23.1.1/jars" />
++      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/jars" />
++      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars" />
++      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
++      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jacoco" />
++      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/javaResources" />
++      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/libs" />
++      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/lint" />
++      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifests" />
++      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/ndk" />
++      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/pre-dexed" />
++      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/proguard" />
++      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/res" />
++      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/rs" />
++      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/symbols" />
++      <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
++      <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
++    </content>
++    <orderEntry type="jdk" jdkName="Android API 23 Platform" jdkType="Android SDK" />
++    <orderEntry type="sourceFolder" forTests="false" />
++    <orderEntry type="library" exported="" name="recyclerview-v7-23.1.1" level="project" />
++    <orderEntry type="library" exported="" name="support-v4-23.1.1" level="project" />
++    <orderEntry type="library" exported="" name="support-annotations-23.1.1" level="project" />
++    <orderEntry type="library" exported="" name="appcompat-v7-23.1.1" level="project" />
++    <orderEntry type="library" exported="" name="design-23.1.1" level="project" />
++  </component>
++</module>
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_item_list.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/fragment_item_list.xml	(revision )
++++ app/src/main/res/layout/fragment_item_list.xml	(revision )
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="utf-8"?>
++<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context="projetovarsea.lucassoft.com.br.projetovarsea.ItemFragment">
++
++    <ListView android:id="@android:id/list" android:layout_width="match_parent"
++        android:layout_height="match_parent" />
++
++    <TextView android:id="@android:id/empty" android:layout_width="match_parent"
++        android:layout_height="match_parent" android:gravity="center" />
++
++</FrameLayout>
+Index: app/src/main/res/values/colors.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/colors.xml	(revision )
++++ app/src/main/res/values/colors.xml	(revision )
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<resources>
++    <color name="colorPrimary">#3F51B5</color>
++    <color name="colorPrimaryDark">#303F9F</color>
++    <color name="colorAccent">#FF4081</color>
++</resources>
+Index: .idea/.name
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/.name	(revision )
++++ .idea/.name	(revision )
+@@ -0,0 +1,1 @@
++ProjetoVarsea
+\ No newline at end of file
+Index: app/src/main/res/values/styles.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/styles.xml	(revision )
++++ app/src/main/res/values/styles.xml	(revision )
+@@ -0,0 +1,17 @@
++<resources>
++
++    <!-- Base application theme. -->
++    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
++        <!-- Customize your theme here. -->
++        <item name="colorPrimary">@color/colorPrimary</item>
++        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
++        <item name="colorAccent">@color/colorAccent</item>
++    </style>
++    <style name="AppTheme.NoActionBar">
++        <item name="windowActionBar">false</item>
++        <item name="windowNoTitle">true</item>
++    </style>
++    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
++    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
++
++</resources>
+Index: app/src/main/res/layout/fragment_item_grid.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/fragment_item_grid.xml	(revision )
++++ app/src/main/res/layout/fragment_item_grid.xml	(revision )
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="utf-8"?>
++<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    tools:context="projetovarsea.lucassoft.com.br.projetovarsea.ItemFragment">
++
++    <GridView android:id="@android:id/list" android:layout_width="match_parent"
++        android:layout_height="match_parent" android:numColumns="2" />
++
++    <TextView android:id="@android:id/empty" android:layout_width="match_parent"
++        android:layout_height="match_parent" android:gravity="center" />
++
++</FrameLayout>
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/strings.xml	(revision )
++++ app/src/main/res/values/strings.xml	(revision )
+@@ -0,0 +1,8 @@
++<resources>
++    <string name="app_name">Pedala BR</string>
++    <string name="action_settings">Settings</string>
++
++<!-- TODO: Remove or change this placeholder text -->
++    <string name="hello_blank_fragment">Hello blank fragment</string>
++    <string name="title_activity_main2">Main2Activity</string>
++</resources>
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/modules.xml	(revision )
++++ .idea/modules.xml	(revision )
+@@ -0,0 +1,9 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/ProjetoVarsea.iml" filepath="$PROJECT_DIR$/ProjetoVarsea.iml" />
++      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: gradlew.bat
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- gradlew.bat	(revision )
++++ gradlew.bat	(revision )
+@@ -0,0 +1,90 @@
++@if "%DEBUG%" == "" @echo off
++@rem ##########################################################################
++@rem
++@rem  Gradle startup script for Windows
++@rem
++@rem ##########################################################################
++
++@rem Set local scope for the variables with windows NT shell
++if "%OS%"=="Windows_NT" setlocal
++
++@rem Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
++set DEFAULT_JVM_OPTS=
++
++set DIRNAME=%~dp0
++if "%DIRNAME%" == "" set DIRNAME=.
++set APP_BASE_NAME=%~n0
++set APP_HOME=%DIRNAME%
++
++@rem Find java.exe
++if defined JAVA_HOME goto findJavaFromJavaHome
++
++set JAVA_EXE=java.exe
++%JAVA_EXE% -version >NUL 2>&1
++if "%ERRORLEVEL%" == "0" goto init
++
++echo.
++echo ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
++echo.
++echo Please set the JAVA_HOME variable in your environment to match the
++echo location of your Java installation.
++
++goto fail
++
++:findJavaFromJavaHome
++set JAVA_HOME=%JAVA_HOME:"=%
++set JAVA_EXE=%JAVA_HOME%/bin/java.exe
++
++if exist "%JAVA_EXE%" goto init
++
++echo.
++echo ERROR: JAVA_HOME is set to an invalid directory: %JAVA_HOME%
++echo.
++echo Please set the JAVA_HOME variable in your environment to match the
++echo location of your Java installation.
++
++goto fail
++
++:init
++@rem Get command-line arguments, handling Windowz variants
++
++if not "%OS%" == "Windows_NT" goto win9xME_args
++if "%@eval[2+2]" == "4" goto 4NT_args
++
++:win9xME_args
++@rem Slurp the command line arguments.
++set CMD_LINE_ARGS=
++set _SKIP=2
++
++:win9xME_args_slurp
++if "x%~1" == "x" goto execute
++
++set CMD_LINE_ARGS=%*
++goto execute
++
++:4NT_args
++@rem Get arguments from the 4NT Shell from JP Software
++set CMD_LINE_ARGS=%$
++
++:execute
++@rem Setup the command line
++
++set CLASSPATH=%APP_HOME%\gradle\wrapper\gradle-wrapper.jar
++
++@rem Execute Gradle
++"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -classpath "%CLASSPATH%" org.gradle.wrapper.GradleWrapperMain %CMD_LINE_ARGS%
++
++:end
++@rem End local scope for the variables with windows NT shell
++if "%ERRORLEVEL%"=="0" goto mainEnd
++
++:fail
++rem Set variable GRADLE_EXIT_CONSOLE if you need the _script_ return code instead of
++rem the _cmd.exe /c_ return code!
++if  not "" == "%GRADLE_EXIT_CONSOLE%" exit 1
++exit /b 1
++
++:mainEnd
++if "%OS%"=="Windows_NT" endlocal
++
++:omega
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/compiler.xml	(revision )
++++ .idea/compiler.xml	(revision )
+@@ -0,0 +1,22 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <resourceExtensions />
++    <wildcardResourcePatterns>
++      <entry name="!?*.java" />
++      <entry name="!?*.form" />
++      <entry name="!?*.class" />
++      <entry name="!?*.groovy" />
++      <entry name="!?*.scala" />
++      <entry name="!?*.flex" />
++      <entry name="!?*.kt" />
++      <entry name="!?*.clj" />
++      <entry name="!?*.aj" />
++    </wildcardResourcePatterns>
++    <annotationProcessing>
++      <profile default="true" name="Default" enabled="false">
++        <processorPath useClasspath="true" />
++      </profile>
++    </annotationProcessing>
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_two.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/fragment_two.xml	(revision )
++++ app/src/main/res/layout/fragment_two.xml	(revision )
+@@ -0,0 +1,44 @@
++<?xml version="1.0" encoding="utf-8"?>
++<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    android:orientation="vertical" android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    android:background="#ffffff">
++
++
++    <ImageView
++        android:layout_width="50dp"
++        android:layout_height="60dp"
++        android:id="@+id/imageView"
++        android:src="@drawable/team"
++        android:layout_alignParentLeft="true"
++        android:layout_alignParentStart="true"
++        android:layout_margin="5dp"
++       />
++
++    <LinearLayout
++        android:orientation="vertical"
++        android:layout_width="match_parent"
++        android:layout_height="50dp"
++        android:weightSum="1"
++        android:layout_alignTop="@+id/imageView"
++        android:layout_toRightOf="@+id/imageView"
++        android:layout_toEndOf="@+id/imageView"
++        android:layout_marginTop="6dp">
++
++        <TextView
++            android:layout_width="match_parent"
++            android:layout_height="wrap_content"
++            android:textAppearance="?android:attr/textAppearanceMedium"
++            android:text="Medium Text"
++            android:id="@+id/txtNomeTime"
++            android:layout_weight="0.03" />
++
++        <TextView
++            android:layout_width="match_parent"
++            android:layout_height="38dp"
++            android:textAppearance="?android:attr/textAppearanceSmall"
++            android:text="Small Text"
++            android:id="@+id/txtDescricaoTime" />
++    </LinearLayout>
++
++</RelativeLayout>
+\ No newline at end of file
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/gradle.xml	(revision )
++++ .idea/gradle.xml	(revision )
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="GradleSettings">
++    <option name="linkedExternalProjectsSettings">
++      <GradleProjectSettings>
++        <option name="distributionType" value="LOCAL" />
++        <option name="externalProjectPath" value="$PROJECT_DIR$" />
++        <option name="gradleHome" value="C:\Program Files\Android\Android Studio\gradle\gradle-2.4" />
++        <option name="gradleJvm" value="1.7" />
++        <option name="modules">
++          <set>
++            <option value="$PROJECT_DIR$" />
++            <option value="$PROJECT_DIR$/app" />
++          </set>
++        </option>
++      </GradleProjectSettings>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/test/java/projetovarsea/lucassoft/com/br/projetovarsea/ExampleUnitTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/test/java/projetovarsea/lucassoft/com/br/projetovarsea/ExampleUnitTest.java	(revision )
++++ app/src/test/java/projetovarsea/lucassoft/com/br/projetovarsea/ExampleUnitTest.java	(revision )
+@@ -0,0 +1,15 @@
++package projetovarsea.lucassoft.com.br.projetovarsea;
++
++import org.junit.Test;
++
++import static org.junit.Assert.*;
++
++/**
++ * To work on unit tests, switch the Test Artifact in the Build Variants view.
++ */
++public class ExampleUnitTest {
++    @Test
++    public void addition_isCorrect() throws Exception {
++        assertEquals(4, 2 + 2);
++    }
++}
+\ No newline at end of file
+Index: app/src/main/java/projetovarsea/lucassoft/com/br/projetovarsea/CustomListAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/projetovarsea/lucassoft/com/br/projetovarsea/CustomListAdapter.java	(revision )
++++ app/src/main/java/projetovarsea/lucassoft/com/br/projetovarsea/CustomListAdapter.java	(revision )
+@@ -0,0 +1,44 @@
++package projetovarsea.lucassoft.com.br.projetovarsea;
++
++import android.content.Context;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++import android.widget.ArrayAdapter;
++import android.widget.ImageView;
++import android.widget.TextView;
++
++import java.util.List;
++
++/**
++ * Created by Lucas on 03/05/2016.
++ */
++public class CustomListAdapter extends ArrayAdapter<CampeonatoVO> {
++
++    private Context context;
++    public CustomListAdapter(Context context, int resource, List<CampeonatoVO> objects) {
++        super(context, resource, objects);
++        this.context = context;  //
++    }
++
++    @Override
++    public View getView(int position, View convertView, ViewGroup parent) {
++        CampeonatoVO venue =  getItem(position);
++
++        if (convertView == null){
++            convertView = LayoutInflater.from(getContext()).inflate(R.layout.lista_campeonato,parent,false);
++        }
++
++        TextView text1 = (TextView) convertView.findViewById(R.id.textView);
++
++        ImageView imageView = (ImageView) convertView.findViewById(R.id.imageView);
++
++        TextView text2 = (TextView) convertView.findViewById(R.id.textView2);
++
++        text1.setText(venue.getNomeCampeonato());
++        text2.setText(venue.getDescricacaoCampeonato());
++
++
++        return convertView;
++    }
++}
+Index: .idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/encodings.xml	(revision )
++++ .idea/encodings.xml	(revision )
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Encoding">
++    <file url="PROJECT" charset="UTF-8" />
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/java/projetovarsea/lucassoft/com/br/projetovarsea/dummy/DummyContent.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/projetovarsea/lucassoft/com/br/projetovarsea/dummy/DummyContent.java	(revision )
++++ app/src/main/java/projetovarsea/lucassoft/com/br/projetovarsea/dummy/DummyContent.java	(revision )
+@@ -0,0 +1,55 @@
++package projetovarsea.lucassoft.com.br.projetovarsea.dummy;
++
++import java.util.ArrayList;
++import java.util.HashMap;
++import java.util.List;
++import java.util.Map;
++
++/**
++ * Helper class for providing sample content for user interfaces created by
++ * Android template wizards.
++ * <p/>
++ * TODO: Replace all uses of this class before publishing your app.
++ */
++public class DummyContent {
++
++    /**
++     * An array of sample (dummy) items.
++     */
++    public static List<DummyItem> ITEMS = new ArrayList<DummyItem>();
++
++    /**
++     * A map of sample (dummy) items, by ID.
++     */
++    public static Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
++
++    static {
++        // Add 3 sample items.
++        addItem(new DummyItem("1", "Item 1"));
++        addItem(new DummyItem("2", "Item 2"));
++        addItem(new DummyItem("3", "Item 3"));
++    }
++
++    private static void addItem(DummyItem item) {
++        ITEMS.add(item);
++        ITEM_MAP.put(item.id, item);
++    }
++
++    /**
++     * A dummy item representing a piece of content.
++     */
++    public static class DummyItem {
++        public String id;
++        public String content;
++
++        public DummyItem(String id, String content) {
++            this.id = id;
++            this.content = content;
++        }
++
++        @Override
++        public String toString() {
++            return content;
++        }
++    }
++}
+Index: app/src/main/res/values-v21/styles.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values-v21/styles.xml	(revision )
++++ app/src/main/res/values-v21/styles.xml	(revision )
+@@ -0,0 +1,8 @@
++<resources>>
++    <style name="AppTheme.NoActionBar">
++        <item name="windowActionBar">false</item>
++        <item name="windowNoTitle">true</item>
++        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
++        <item name="android:statusBarColor">@android:color/transparent</item>
++    </style>
++</resources>
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/vcs.xml	(revision )
++++ .idea/vcs.xml	(revision )
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/androidTest/java/projetovarsea/lucassoft/com/br/projetovarsea/ApplicationTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/androidTest/java/projetovarsea/lucassoft/com/br/projetovarsea/ApplicationTest.java	(revision )
++++ app/src/androidTest/java/projetovarsea/lucassoft/com/br/projetovarsea/ApplicationTest.java	(revision )
+@@ -0,0 +1,13 @@
++package projetovarsea.lucassoft.com.br.projetovarsea;
++
++import android.app.Application;
++import android.test.ApplicationTestCase;
++
++/**
++ * <a href="http://d.android.com/tools/testing/testing_android.html">Testing Fundamentals</a>
++ */
++public class ApplicationTest extends ApplicationTestCase<Application> {
++    public ApplicationTest() {
++        super(Application.class);
++    }
++}
+\ No newline at end of file
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .gitignore	(revision )
++++ .gitignore	(revision )
+@@ -0,0 +1,7 @@
++.gradle
++/local.properties
++/.idea/workspace.xml
++/.idea/libraries
++.DS_Store
++/build
++/captures
+Index: app/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/.gitignore	(revision )
++++ app/.gitignore	(revision )
+@@ -0,0 +1,1 @@
++/build
+Index: app/src/main/java/projetovarsea/lucassoft/com/br/projetovarsea/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/projetovarsea/lucassoft/com/br/projetovarsea/MainActivity.java	(revision )
++++ app/src/main/java/projetovarsea/lucassoft/com/br/projetovarsea/MainActivity.java	(revision )
+@@ -0,0 +1,113 @@
++package projetovarsea.lucassoft.com.br.projetovarsea;
++
++import android.net.Uri;
++import android.os.Bundle;
++import android.support.design.widget.FloatingActionButton;
++import android.support.design.widget.Snackbar;
++import android.support.design.widget.TabLayout;
++import android.support.v4.app.Fragment;
++import android.support.v4.app.FragmentManager;
++import android.support.v4.app.FragmentPagerAdapter;
++import android.support.v4.view.ViewPager;
++import android.support.v7.app.AppCompatActivity;
++import android.support.v7.widget.Toolbar;
++import android.view.View;
++import android.view.Menu;
++import android.view.MenuItem;
++
++import java.util.ArrayList;
++import java.util.List;
++
++public class MainActivity extends AppCompatActivity implements BlankFragment.OnFragmentInteractionListener, TwoFragment.OnFragmentInteractionListener {
++
++
++    private Toolbar toolBar;
++    private TabLayout tabLayout;
++    private ViewPager viewPager;
++
++    @Override
++    protected void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        setContentView(R.layout.activity_main);
++        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
++        setSupportActionBar(toolbar);
++        toolbar = (Toolbar) findViewById(R.id.toolbar);
++        setSupportActionBar(toolbar);
++
++        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
++
++        viewPager = (ViewPager) findViewById(R.id.viewpager);
++        setupViewPager(viewPager);
++
++        tabLayout = (TabLayout) findViewById(R.id.tabs);
++        tabLayout.setupWithViewPager(viewPager);
++
++
++
++    }
++
++    @Override
++    public boolean onCreateOptionsMenu(Menu menu) {
++        // Inflate the menu; this adds items to the action bar if it is present.
++        getMenuInflater().inflate(R.menu.menu_main, menu);
++        return true;
++    }
++
++    @Override
++    public boolean onOptionsItemSelected(MenuItem item) {
++        // Handle action bar item clicks here. The action bar will
++        // automatically handle clicks on the Home/Up button, so long
++        // as you specify a parent activity in AndroidManifest.xml.
++        int id = item.getItemId();
++
++        //noinspection SimplifiableIfStatement
++        if (id == R.id.action_settings) {
++            return true;
++        }
++
++        return super.onOptionsItemSelected(item);
++    }
++
++    private void setupViewPager(ViewPager viewPager) {
++        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
++        adapter.addFragment(new BlankFragment() , "Campeonatos");
++        adapter.addFragment(new TwoFragment() , "Times");
++  /*      adapter.addFragment(new TwoFragment(), "TWO");
++        adapter.addFragment(new ThreeFragment(), "THREE");*/
++        viewPager.setAdapter(adapter);
++    }
++
++    @Override
++    public void onFragmentInteraction(Uri uri) {
++
++    }
++
++    class ViewPagerAdapter extends FragmentPagerAdapter {
++        private final List<Fragment> mFragmentList = new ArrayList<>();
++        private final List<String> mFragmentTitleList = new ArrayList<>();
++
++        public ViewPagerAdapter(FragmentManager manager) {
++            super(manager);
++        }
++
++        @Override
++        public Fragment getItem(int position) {
++            return mFragmentList.get(position);
++        }
++
++        @Override
++        public int getCount() {
++            return mFragmentList.size();
++        }
++
++        public void addFragment(Fragment fragment, String title) {
++            mFragmentList.add(fragment);
++            mFragmentTitleList.add(title);
++        }
++
++        @Override
++        public CharSequence getPageTitle(int position) {
++            return mFragmentTitleList.get(position);
++        }
++    }
++}
+Index: .idea/copyright/profiles_settings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/copyright/profiles_settings.xml	(revision )
++++ .idea/copyright/profiles_settings.xml	(revision )
+@@ -0,0 +1,3 @@
++<component name="CopyrightManager">
++  <settings default="" />
++</component>
+\ No newline at end of file
+Index: app/src/main/java/projetovarsea/lucassoft/com/br/projetovarsea/BlankFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/projetovarsea/lucassoft/com/br/projetovarsea/BlankFragment.java	(revision )
++++ app/src/main/java/projetovarsea/lucassoft/com/br/projetovarsea/BlankFragment.java	(revision )
+@@ -0,0 +1,178 @@
++package projetovarsea.lucassoft.com.br.projetovarsea;
++
++import android.app.Activity;
++import android.content.Intent;
++import android.net.Uri;
++import android.os.Bundle;
++
++import android.support.design.widget.FloatingActionButton;
++import android.support.design.widget.Snackbar;
++import android.support.v4.app.Fragment;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++import android.widget.AbsListView;
++import android.widget.AdapterView;
++import android.widget.ListAdapter;
++import android.widget.ListView;
++
++import java.util.ArrayList;
++import java.util.List;
++
++
++/**
++ * A simple {@link Fragment} subclass.
++ * Activities that contain this fragment must implement the
++ * {@link BlankFragment.OnFragmentInteractionListener} interface
++ * to handle interaction events.
++ * Use the {@link BlankFragment#newInstance} factory method to
++ * create an instance of this fragment.
++ */
++public class BlankFragment extends Fragment implements AbsListView.OnItemClickListener{
++    // TODO: Rename parameter arguments, choose names that match
++    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
++    private static final String ARG_PARAM1 = "param1";
++    private static final String ARG_PARAM2 = "param2";
++
++    // TODO: Rename and change types of parameters
++    private String mParam1;
++    private String mParam2;
++
++
++    private ListAdapter mAdapter;
++
++    private ListView mListView;
++
++    private CustomListAdapter customAdapterlist;
++    private OnFragmentInteractionListener mListener;
++
++    /**
++     * Use this factory method to create a new instance of
++     * this fragment using the provided parameters.
++     *
++     * @param param1 Parameter 1.
++     * @param param2 Parameter 2.
++     * @return A new instance of fragment BlankFragment.
++     */
++   // TODO: Rename and change types and number of parameters
++    public static BlankFragment newInstance(String param1, String param2) {
++        BlankFragment fragment = new BlankFragment();
++        Bundle args = new Bundle();
++        args.putString(ARG_PARAM1, param1);
++        args.putString(ARG_PARAM2, param2);
++        fragment.setArguments(args);
++        return fragment;
++    }
++
++    public BlankFragment() {
++        // Required empty public constructor
++    }
++
++    @Override
++    public void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++        if (getArguments() != null) {
++            mParam1 = getArguments().getString(ARG_PARAM1);
++            mParam2 = getArguments().getString(ARG_PARAM2);
++        }
++
++        CampeonatoVO campeonato = new CampeonatoVO();
++        campeonato.setNomeCampeonato("Rachão Comunitario");
++        campeonato.setDescricacaoCampeonato("Composto por 20 times, Rachão comunitario é um campeonato realizado no Jardim Angela com as equipes da região.");
++
++        CampeonatoVO campeonato2 = new CampeonatoVO();
++        campeonato2.setNomeCampeonato("Nakamura Champions League 2016");
++        campeonato2.setDescricacaoCampeonato("Composto por 20 times e todos da região da Zona Sul, Champions League da oportunidade do time vencedor conquistar o Brasil.");
++
++
++        CampeonatoVO campeonato3 = new CampeonatoVO();
++        campeonato3.setNomeCampeonato("Brasil - Liga dos Campeões");
++        campeonato3.setDescricacaoCampeonato("Composto por 10 times e todos do Brasil");
++        List<CampeonatoVO> array = new ArrayList<CampeonatoVO>();
++        array.add(campeonato);
++        array.add(campeonato2);
++        array.add(campeonato3);
++
++        customAdapterlist = new CustomListAdapter(this.getActivity(),android.R.layout.simple_list_item_1,array);
++
++
++/*
++        FloatingActionButton fab = (FloatingActionButton) this.getView().findViewById(R.id.fab);
++        fab.setOnClickListener(new View.OnClickListener() {
++            @Override
++            public void onClick(View view) {
++                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
++                        .setAction("Action", null).show();
++            }
++        });
++*/
++    }
++
++    @Override
++    public View onCreateView(LayoutInflater inflater, ViewGroup container,
++                             Bundle savedInstanceState) {
++        View view = inflater.inflate(R.layout.fragment_item_list, container, false);
++
++        // Set the adapter
++        mListView = (ListView) view.findViewById(android.R.id.list);
++        mListView.setAdapter(customAdapterlist);
++
++
++        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
++            @Override
++            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
++                CampeonatoVO venue = customAdapterlist.getItem(position);
++                Bundle bundle = new Bundle();
++                // bundle.putSerializable("venue", (Serializable) venue.getListIamgem());
++                bundle.putString("venue", venue.getNomeCampeonato());
++               // startActivity(new Intent(getActivity(), ScrollingActivity.class).putExtras(bundle));
++            }
++        });
++        return view;
++    }
++
++    // TODO: Rename method, update argument and hook method into UI event
++    public void onButtonPressed(Uri uri) {
++        if (mListener != null) {
++            mListener.onFragmentInteraction(uri);
++        }
++    }
++
++    @Override
++    public void onAttach(Activity activity) {
++        super.onAttach(activity);
++        try {
++            mListener = (OnFragmentInteractionListener) activity;
++        } catch (ClassCastException e) {
++            throw new ClassCastException(activity.toString()
++                    + " must implement OnFragmentInteractionListener");
++        }
++    }
++
++    @Override
++    public void onDetach() {
++        super.onDetach();
++        mListener = null;
++    }
++
++    @Override
++    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
++
++    }
++
++    /**
++     * This interface must be implemented by activities that contain this
++     * fragment to allow an interaction in this fragment to be communicated
++     * to the activity and potentially other fragments contained in that
++     * activity.
++     * <p/>
++     * See the Android Training lesson <a href=
++     * "http://developer.android.com/training/basics/fragments/communicating.html"
++     * >Communicating with Other Fragments</a> for more information.
++     */
++    public interface OnFragmentInteractionListener {
++        // TODO: Update argument type and name
++        public void onFragmentInteraction(Uri uri);
++    }
++
++}
+Index: build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- build.gradle	(revision )
++++ build.gradle	(revision )
+@@ -0,0 +1,23 @@
++// Top-level build file where you can add configuration options common to all sub-projects/modules.
++
++buildscript {
++    repositories {
++        jcenter()
++    }
++    dependencies {
++        classpath 'com.android.tools.build:gradle:1.3.0'
++
++        // NOTE: Do not place your application dependencies here; they belong
++        // in the individual module build.gradle files
++    }
++}
++
++allprojects {
++    repositories {
++        jcenter()
++    }
++}
++
++task clean(type: Delete) {
++    delete rootProject.buildDir
++}
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision )
++++ app/src/main/AndroidManifest.xml	(revision )
+@@ -0,0 +1,28 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    package="projetovarsea.lucassoft.com.br.projetovarsea" >
++
++    <application
++        android:allowBackup="true"
++        android:icon="@mipmap/ic_launcher"
++        android:label="@string/app_name"
++        android:supportsRtl="true"
++        android:theme="@style/AppTheme" >
++        <activity
++            android:name=".MainActivity"
++            android:label="@string/app_name"
++            android:theme="@style/AppTheme.NoActionBar" >
++            <intent-filter>
++                <action android:name="android.intent.action.MAIN" />
++
++                <category android:name="android.intent.category.LAUNCHER" />
++            </intent-filter>
++        </activity>
++        <activity
++            android:name=".Main2Activity"
++            android:label="@string/title_activity_main2"
++            android:theme="@style/AppTheme.NoActionBar" >
++        </activity>
++    </application>
++
++</manifest>
+Index: app/src/main/java/projetovarsea/lucassoft/com/br/projetovarsea/ItemFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/projetovarsea/lucassoft/com/br/projetovarsea/ItemFragment.java	(revision )
++++ app/src/main/java/projetovarsea/lucassoft/com/br/projetovarsea/ItemFragment.java	(revision )
+@@ -0,0 +1,150 @@
++package projetovarsea.lucassoft.com.br.projetovarsea;
++
++import android.app.Activity;
++import android.os.Bundle;
++import android.app.Fragment;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++import android.widget.AbsListView;
++import android.widget.AdapterView;
++import android.widget.ArrayAdapter;
++import android.widget.ListAdapter;
++import android.widget.TextView;
++
++import projetovarsea.lucassoft.com.br.projetovarsea.dummy.DummyContent;
++
++/**
++ * A fragment representing a list of Items.
++ * <p/>
++ * Large screen devices (such as tablets) are supported by replacing the ListView
++ * with a GridView.
++ * <p/>
++ * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
++ * interface.
++ */
++public class ItemFragment extends Fragment implements AbsListView.OnItemClickListener {
++
++    // TODO: Rename parameter arguments, choose names that match
++    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
++    private static final String ARG_PARAM1 = "param1";
++    private static final String ARG_PARAM2 = "param2";
++
++    // TODO: Rename and change types of parameters
++    private String mParam1;
++    private String mParam2;
++
++    private OnFragmentInteractionListener mListener;
++
++    /**
++     * The fragment's ListView/GridView.
++     */
++    private AbsListView mListView;
++
++    /**
++     * The Adapter which will be used to populate the ListView/GridView with
++     * Views.
++     */
++    private ListAdapter mAdapter;
++
++    // TODO: Rename and change types of parameters
++    public static ItemFragment newInstance(String param1, String param2) {
++        ItemFragment fragment = new ItemFragment();
++        Bundle args = new Bundle();
++        args.putString(ARG_PARAM1, param1);
++        args.putString(ARG_PARAM2, param2);
++        fragment.setArguments(args);
++        return fragment;
++    }
++
++    /**
++     * Mandatory empty constructor for the fragment manager to instantiate the
++     * fragment (e.g. upon screen orientation changes).
++     */
++    public ItemFragment() {
++    }
++
++    @Override
++    public void onCreate(Bundle savedInstanceState) {
++        super.onCreate(savedInstanceState);
++
++        if (getArguments() != null) {
++            mParam1 = getArguments().getString(ARG_PARAM1);
++            mParam2 = getArguments().getString(ARG_PARAM2);
++        }
++
++        // TODO: Change Adapter to display your content
++        mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
++                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
++    }
++
++    @Override
++    public View onCreateView(LayoutInflater inflater, ViewGroup container,
++                             Bundle savedInstanceState) {
++        View view = inflater.inflate(R.layout.fragment_item, container, false);
++
++        // Set the adapter
++        mListView = (AbsListView) view.findViewById(android.R.id.list);
++        ((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
++
++        // Set OnItemClickListener so we can be notified on item clicks
++        mListView.setOnItemClickListener(this);
++
++        return view;
++    }
++
++    @Override
++    public void onAttach(Activity activity) {
++        super.onAttach(activity);
++        try {
++            mListener = (OnFragmentInteractionListener) activity;
++        } catch (ClassCastException e) {
++            throw new ClassCastException(activity.toString()
++                    + " must implement OnFragmentInteractionListener");
++        }
++    }
++
++    @Override
++    public void onDetach() {
++        super.onDetach();
++        mListener = null;
++    }
++
++    @Override
++    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
++        if (null != mListener) {
++            // Notify the active callbacks interface (the activity, if the
++            // fragment is attached to one) that an item has been selected.
++            mListener.onFragmentInteraction(DummyContent.ITEMS.get(position).id);
++        }
++    }
++
++    /**
++     * The default content for this Fragment has a TextView that is shown when
++     * the list is empty. If you would like to change the text, call this method
++     * to supply the text it should use.
++     */
++    public void setEmptyText(CharSequence emptyText) {
++        View emptyView = mListView.getEmptyView();
++
++        if (emptyView instanceof TextView) {
++            ((TextView) emptyView).setText(emptyText);
++        }
++    }
++
++    /**
++     * This interface must be implemented by activities that contain this
++     * fragment to allow an interaction in this fragment to be communicated
++     * to the activity and potentially other fragments contained in that
++     * activity.
++     * <p/>
++     * See the Android Training lesson <a href=
++     * "http://developer.android.com/training/basics/fragments/communicating.html"
++     * >Communicating with Other Fragments</a> for more information.
++     */
++    public interface OnFragmentInteractionListener {
++        // TODO: Update argument type and name
++        public void onFragmentInteraction(String id);
++    }
++
++}
+Index: app/src/main/res/layout/lista_campeonato.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/lista_campeonato.xml	(revision )
++++ app/src/main/res/layout/lista_campeonato.xml	(revision )
+@@ -0,0 +1,45 @@
++<?xml version="1.0" encoding="utf-8"?>
++<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
++android:orientation="vertical" android:layout_width="match_parent"
++android:layout_height="match_parent"
++android:background="#ffffff">
++
++
++<ImageView
++    android:layout_width="50dp"
++    android:layout_height="60dp"
++    android:id="@+id/imageView"
++    android:src="@drawable/timegenerico"
++    android:layout_alignParentLeft="true"
++    android:layout_alignParentStart="true"
++    android:layout_margin="5dp"
++    />
++
++<LinearLayout
++    android:orientation="vertical"
++    android:layout_width="match_parent"
++    android:layout_height="50dp"
++    android:weightSum="1"
++    android:layout_alignTop="@+id/imageView"
++    android:layout_toRightOf="@+id/imageView"
++    android:layout_toEndOf="@+id/imageView"
++    android:layout_marginTop="6dp"
++    android:id="@+id/linearLayout">
++
++    <TextView
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:textAppearance="?android:attr/textAppearanceMedium"
++        android:text="Medium Text"
++        android:id="@+id/textView"
++        android:layout_weight="0.03" />
++
++    <TextView
++        android:layout_width="match_parent"
++        android:layout_height="71dp"
++        android:textAppearance="?android:attr/textAppearanceSmall"
++        android:text="Small Text"
++        android:id="@+id/textView2"/>
++</LinearLayout>
++
++</RelativeLayout>
+\ No newline at end of file
+Index: app/src/main/res/values/refs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/refs.xml	(revision )
++++ app/src/main/res/values/refs.xml	(revision )
+@@ -0,0 +1,12 @@
++<resources>
++
++    <!--
++    Layout alias to replace the single-pane version of the layout with a
++    two-pane version on Large screens.
++
++    For more on layout aliases, see:
++    http://developer.android.com/training/multiscreen/screensizes.html#TaskUseAliasFilters
++    -->
++    <item name="fragment_item" type="layout">@layout/fragment_item_list</item>
++
++</resources>
+\ No newline at end of file
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/build.gradle	(revision )
++++ app/build.gradle	(revision )
+@@ -0,0 +1,27 @@
++apply plugin: 'com.android.application'
++
++android {
++    compileSdkVersion 23
++    buildToolsVersion "23.0.3"
++
++    defaultConfig {
++        applicationId "projetovarsea.lucassoft.com.br.projetovarsea"
++        minSdkVersion 15
++        targetSdkVersion 23
++        versionCode 1
++        versionName "1.0"
++    }
++    buildTypes {
++        release {
++            minifyEnabled false
++            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
++        }
++    }
++}
++
++dependencies {
++    compile fileTree(dir: 'libs', include: ['*.jar'])
++    testCompile 'junit:junit:4.12'
++    compile 'com.android.support:appcompat-v7:23.1.1'
++    compile 'com.android.support:design:23.1.1'
++}
+Index: app/src/main/java/projetovarsea/lucassoft/com/br/projetovarsea/CampeonatoVO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/projetovarsea/lucassoft/com/br/projetovarsea/CampeonatoVO.java	(revision )
++++ app/src/main/java/projetovarsea/lucassoft/com/br/projetovarsea/CampeonatoVO.java	(revision )
+@@ -0,0 +1,38 @@
++package projetovarsea.lucassoft.com.br.projetovarsea;
++
++import java.io.Serializable;
++
++/**
++ * Created by Lucas on 03/05/2016.
++ */
++public class CampeonatoVO implements Serializable {
++
++    private Integer idCampeonato;
++
++    public Integer getIdCampeonato() {
++        return idCampeonato;
++    }
++
++    public void setIdCampeonato(Integer idCampeonato) {
++        this.idCampeonato = idCampeonato;
++    }
++
++    public String getNomeCampeonato() {
++        return nomeCampeonato;
++    }
++
++    public void setNomeCampeonato(String nomeCampeonato) {
++        this.nomeCampeonato = nomeCampeonato;
++    }
++
++    public String getDescricacaoCampeonato() {
++        return descricacaoCampeonato;
++    }
++
++    public void setDescricacaoCampeonato(String descricacaoCampeonato) {
++        this.descricacaoCampeonato = descricacaoCampeonato;
++    }
++
++    private String nomeCampeonato;
++    private String descricacaoCampeonato;
++}
+Index: app/src/main/res/values/dimens.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/dimens.xml	(revision )
++++ app/src/main/res/values/dimens.xml	(revision )
+@@ -0,0 +1,6 @@
++<resources>
++    <!-- Default screen margins, per the Android Design guidelines. -->
++    <dimen name="activity_horizontal_margin">16dp</dimen>
++    <dimen name="activity_vertical_margin">16dp</dimen>
++    <dimen name="fab_margin">16dp</dimen>
++</resources>
+Index: gradle.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1252
+===================================================================
+--- gradle.properties	(revision )
++++ gradle.properties	(revision )
+@@ -0,0 +1,18 @@
++# Project-wide Gradle settings.
++
++# IDE (e.g. Android Studio) users:
++# Gradle settings configured through the IDE *will override*
++# any settings specified in this file.
++
++# For more details on how to configure your build environment visit
++# http://www.gradle.org/docs/current/userguide/build_environment.html
++
++# Specifies the JVM arguments used for the daemon process.
++# The setting is particularly useful for tweaking memory settings.
++# Default value: -Xmx10248m -XX:MaxPermSize=256m
++# org.gradle.jvmargs=-Xmx2048m -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Dfile.encoding=UTF-8
++
++# When configured, Gradle will run in incubating parallel mode.
++# This option should only be used with decoupled projects. More details, visit
++# http://www.gradle.org/docs/current/userguide/multi_project_builds.html#sec:decoupled_projects
++# org.gradle.parallel=true
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(revision )
++++ .idea/misc.xml	(revision )
+@@ -0,0 +1,46 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="EntryPointsManager">
++    <entry_points version="2.0" />
++  </component>
++  <component name="NullableNotNullManager">
++    <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
++    <option name="myDefaultNotNull" value="android.support.annotation.NonNull" />
++    <option name="myNullables">
++      <value>
++        <list size="4">
++          <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.Nullable" />
++          <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nullable" />
++          <item index="2" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.Nullable" />
++          <item index="3" class="java.lang.String" itemvalue="android.support.annotation.Nullable" />
++        </list>
++      </value>
++    </option>
++    <option name="myNotNulls">
++      <value>
++        <list size="4">
++          <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.NotNull" />
++          <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nonnull" />
++          <item index="2" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.NonNull" />
++          <item index="3" class="java.lang.String" itemvalue="android.support.annotation.NonNull" />
++        </list>
++      </value>
++    </option>
++  </component>
++  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
++    <OptionsSetting value="true" id="Add" />
++    <OptionsSetting value="true" id="Remove" />
++    <OptionsSetting value="true" id="Checkout" />
++    <OptionsSetting value="true" id="Update" />
++    <OptionsSetting value="true" id="Status" />
++    <OptionsSetting value="true" id="Edit" />
++    <ConfirmationsSetting value="0" id="Add" />
++    <ConfirmationsSetting value="0" id="Remove" />
++  </component>
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="true" assert-keyword="true" jdk-15="true" project-jdk-name="1.7" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/build/classes" />
++  </component>
++  <component name="ProjectType">
++    <option name="id" value="Android" />
++  </component>
++</project>
+\ No newline at end of file

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.ItemFragment">
+
+    <ListView android:id="@android:id/list" android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView android:id="@android:id/empty" android:layout_width="match_parent"
+        android:layout_height="match_parent" android:gravity="center" />
+
+       <android.support.design.widget.FloatingActionButton android:id="@+id/fab"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:src="@android:drawable/ic_input_add"
+        android:layout_marginRight="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <android.support.design.widget.FloatingActionButton android:id="@+id/fab2"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:src="@android:drawable/ic_input_add"
+        app:fabSize="mini"
+        android:visibility="invisible"
+        android:layout_above="@+id/fab3"
+        android:layout_alignRight="@+id/fab"
+        android:layout_alignEnd="@+id/fab" />
+    <android.support.design.widget.FloatingActionButton android:id="@+id/fab3"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:src="@android:drawable/ic_input_add"
+        app:fabSize="mini"
+        android:visibility="invisible"
+        android:layout_above="@+id/fab"
+        android:layout_toLeftOf="@+id/fab"
+        android:layout_toStartOf="@+id/fab" />
+
+
+
+</RelativeLayout>
