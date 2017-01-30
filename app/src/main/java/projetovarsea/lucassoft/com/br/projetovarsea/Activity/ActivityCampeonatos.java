@@ -39,7 +39,7 @@ public class ActivityCampeonatos extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        integrationServices = new IntegrationServices();
+      //  integrationServices = new IntegrationServices(null,nul);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activity_campeonatos);
 
@@ -54,7 +54,7 @@ public class ActivityCampeonatos extends AppCompatActivity {
 
         final Object[] b = new Object[2];
 
-        button.setOnClickListener(new View.OnClickListener() {
+       /* button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -67,13 +67,13 @@ public class ActivityCampeonatos extends AppCompatActivity {
                     campeonatoVO.setVlrCampeonato(Double.parseDouble(txtVlrCampeonato.getText().toString()));
 
                     EnviarDadosWS enviarDadosWS = new EnviarDadosWS();
-                    enviarDadosWS.enviarDadosCampeonato(campeonatoVO);
+                  //  enviarDadosWS.enviarDadosCampeonato(campeonatoVO,this.view);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
-        });
+        });*/
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.

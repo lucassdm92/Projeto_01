@@ -1,7 +1,14 @@
 package projetovarsea.lucassoft.com.br.projetovarsea.IntegrationWS;
 
+import android.app.ProgressDialog;
+import android.media.tv.TvContract;
 import android.os.AsyncTask;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,14 +29,30 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
+import projetovarsea.lucassoft.com.br.projetovarsea.R;
+import projetovarsea.lucassoft.com.br.projetovarsea.fragment_cadastro_campeonatos;
+
+import static android.R.attr.fragment;
+
 /**
  * Created by Lucas on 21/05/2016.
  */
 public class IntegrationServices extends AsyncTask {
 
-    private static final String POST_URL_CAMPEONATOS = "http://192.168.1.45:8080/wspedalada/rest/wsServicesIntegration/create";
+    private static final String POST_URL_CAMPEONATOS = "http://10.0.2.2:8080/wspedalada/rest/wsServicesIntegration/create";
+    private ProgressBar progressBar;
+    private FragmentManager fragment;
+    private Fragment fragmentd;
+
+    public IntegrationServices(final ProgressBar progressBar, FragmentManager fragment, Fragment fragmentd){
+        this.progressBar  = progressBar;
+        this.fragment = fragment;
+        this.fragmentd = fragmentd;
+    }
+
     @Override
     protected Object doInBackground(Object[] params) {
+
         InputStream inStream =     this.getConection((JSONObject) params[0]);
         return "K";
     }
@@ -37,11 +60,14 @@ public class IntegrationServices extends AsyncTask {
     @Override
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
+        this.progressBar.setVisibility(View.INVISIBLE);
+        this.fragment.beginTransaction().remove(this.fragmentd).commit();
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+        this.progressBar.setVisibility(View.VISIBLE);
     }
 
     private InputStream getConection(JSONObject valor){
@@ -69,8 +95,6 @@ public class IntegrationServices extends AsyncTask {
             BufferedReader bfin = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
             bfin.close();
         }
-
-
         catch (IOException e) {
             e.printStackTrace();
         }
@@ -78,7 +102,7 @@ public class IntegrationServices extends AsyncTask {
         return in;
     }
 
-    private JSONObject parseObjeto(InputStream in){
+    /*private JSONObject parseObjeto(InputStream in){
 
         JSONObject c = null;
 
@@ -102,7 +126,7 @@ public class IntegrationServices extends AsyncTask {
 
         return c;
 
-    }
+    }*/
 
 
 }

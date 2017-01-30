@@ -8,6 +8,11 @@ import java.io.Serializable;
 public class CampeonatoVO implements Serializable {
 
     private Integer idCampeonato;
+    private String descricacaoCampeonato;
+    private Short qtdTime;
+    private Short qtdTempo;
+    private Double vlrCampeonato;
+    private String nomeCampeonato;
 
     public Integer getIdCampeonato() {
         return idCampeonato;
@@ -41,7 +46,7 @@ public class CampeonatoVO implements Serializable {
         this.qtdTime = qtdTime;
     }
 
-    private String nomeCampeonato;
+
 
     public Double getVlrCampeonato() {
         return vlrCampeonato;
@@ -59,8 +64,5 @@ public class CampeonatoVO implements Serializable {
         this.qtdTempo = qtdTempo;
     }
 
-    private String descricacaoCampeonato;
-    private Short qtdTime;
-    private Short qtdTempo;
-    private Double vlrCampeonato;
+
 }

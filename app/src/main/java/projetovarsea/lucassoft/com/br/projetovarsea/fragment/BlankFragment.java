@@ -86,7 +86,7 @@ public class BlankFragment extends Fragment implements AbsListView.OnItemClickLi
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        CampeonatoVO campeonato = new CampeonatoVO();
+      /*  CampeonatoVO campeonato = new CampeonatoVO();
         campeonato.setNomeCampeonato("Rachão Comunitario");
         campeonato.setDescricacaoCampeonato("Composto por 20 times, Rachão comunitario é um campeonato realizado no Jardim Angela com as equipes da região.");
 
@@ -99,11 +99,20 @@ public class BlankFragment extends Fragment implements AbsListView.OnItemClickLi
         campeonato3.setNomeCampeonato("Brasil - Liga dos Campeões");
         campeonato3.setDescricacaoCampeonato("Composto por 10 times e todos do Brasil");
         List<CampeonatoVO> array = new ArrayList<CampeonatoVO>();
+
+        CampeonatoVO campeonato4 = new CampeonatoVO();
+        campeonato3.setNomeCampeonato("Brasil - Liga dos Campeões");
+        campeonato3.setDescricacaoCampeonato("Composto por 10 times e todos do Brasil");
+        List<CampeonatoVO> array = new ArrayList<CampeonatoVO>();
+        CampeonatoVO campeonato4 = new CampeonatoVO();
+        campeonato3.setNomeCampeonato("Brasil - Liga dos Campeões");
+        campeonato3.setDescricacaoCampeonato("Composto por 10 times e todos do Brasil");
+        List<CampeonatoVO> array = new ArrayList<CampeonatoVO>();
         array.add(campeonato);
         array.add(campeonato2);
-        array.add(campeonato3);
+        array.add(campeonato3);*/
 
-        customAdapterlist = new CustomListAdapter(this.getActivity(),android.R.layout.simple_list_item_1,array);
+      //  customAdapterlist = new CustomListAdapter(this.getActivity(),android.R.layout.simple_list_item_1,array);
 
 
 
