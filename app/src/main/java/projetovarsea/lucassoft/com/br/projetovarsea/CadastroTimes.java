@@ -79,6 +79,7 @@ public class CadastroTimes extends Fragment {
         this.txtDescribleTeam = (EditText) this.view.findViewById(R.id.editText11);
         this.btnPersistence = (Button) this.view.findViewById(button4);
 
+
         return this.view;
     }
 
