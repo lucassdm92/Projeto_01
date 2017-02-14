@@ -10,6 +10,15 @@ public class TimesVO implements Serializable {
     private String nomeTime;
     private String descricaoTimes;
     private String datainauguração;
+    private Integer qtdPlayerTeam;
+
+    public Integer getQtdPlayerTeam() {
+        return qtdPlayerTeam;
+    }
+
+    public void setQtdPlayerTeam(Integer qtdPlayerTeam) {
+        this.qtdPlayerTeam = qtdPlayerTeam;
+    }
 
     public Integer getIdTime() {
         return idTime;

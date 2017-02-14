@@ -1,6 +1,7 @@
 package projetovarsea.lucassoft.com.br.projetovarsea.IntegrationWS;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.media.tv.TvContract;
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
@@ -40,19 +41,27 @@ import static android.R.attr.fragment;
 public class IntegrationServices extends AsyncTask {
 
     private static final String POST_URL_CAMPEONATOS = "http://10.0.2.2:8080/wspedalada/rest/wsServicesIntegration/create";
+    private static final String POST_URL_TEAM = "http://10.0.2.2:8080/wspedalada/rest/wsServicesIntegration/createTeam";
     private ProgressBar progressBar;
-    private FragmentManager fragment;
+    private FragmentManager fragmentManager;
     private Fragment fragmentd;
+    private String urlWS;
+    private Map<?,?> context;
 
-    public IntegrationServices(final ProgressBar progressBar, FragmentManager fragment, Fragment fragmentd){
+    public IntegrationServices(final ProgressBar progressBar, FragmentManager fragment, Fragment fragmentd, String urlWS){
         this.progressBar  = progressBar;
-        this.fragment = fragment;
+        this.fragmentManager = fragment;
         this.fragmentd = fragmentd;
+        this.urlWS = urlWS;
+    }
+
+    public IntegrationServices(final Map<?,?> context, final String urlWS){
+        this.context = context;
+        this.urlWS = urlWS;
     }
 
     @Override
     protected Object doInBackground(Object[] params) {
-
         InputStream inStream =     this.getConection((JSONObject) params[0]);
         return "K";
     }
@@ -60,13 +69,18 @@ public class IntegrationServices extends AsyncTask {
     @Override
     protected void onPostExecute(Object o) {
         super.onPostExecute(o);
+        this.progressBar = (ProgressBar) this.context.get("PROGRESS_BAR");
+        this.fragmentd = (Fragment) this.context.get("FRAGMENT");
+        this.fragmentManager = (FragmentManager) this.context.get("FRAGMENT_MANAGER");
         this.progressBar.setVisibility(View.INVISIBLE);
-        this.fragment.beginTransaction().remove(this.fragmentd).commit();
+        this.progressBar.setVisibility(View.INVISIBLE);
+        this.fragmentManager.beginTransaction().remove(this.fragmentd).commit();
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+        this.progressBar = (ProgressBar) this.context.get("PROGRESS_BAR");
         this.progressBar.setVisibility(View.VISIBLE);
     }
 
@@ -77,7 +91,7 @@ public class IntegrationServices extends AsyncTask {
 
         try {
 
-            url = new URL(POST_URL_CAMPEONATOS);
+            url = new URL(this.urlWS);
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("POST");
             urlConnection.setRequestProperty("accept","application/json");
@@ -101,32 +115,4 @@ public class IntegrationServices extends AsyncTask {
 
         return in;
     }
-
-    /*private JSONObject parseObjeto(InputStream in){
-
-        JSONObject c = null;
-
-        BufferedReader bf = new BufferedReader(new InputStreamReader(in));
-        StringBuffer stringBuffer = new StringBuffer();
-        String line = "";
-
-        try {
-            while ((line = bf.readLine()) != null){
-                stringBuffer.append(line);
-            }
-
-
-            c = new JSONObject(stringBuffer.toString());
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return c;
-
-    }*/
-
-
 }
